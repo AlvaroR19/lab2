@@ -18,13 +18,25 @@ public class RegistroResumos {
     }
 
     public int conta(){
-        for ()
+        int contador = 0;
+        for (int j = 0; j < this.tema.length; j++) {
+            if (this.tema[j] != null) {
+                contador++;
+            }
+        }
+        return contador;
     }
+
     public void adiciona(String tema, String conteudo){
-        if (verificarTemas(tema)) {
-            this.tema[0] = tema;
+        int index = 0;
+        if (!verificarTemas(tema)) {
+            if (index == this.tema.length) {
+                index = 0;
+            } else {
+                this.tema[index] = conteudo;
+                index++;
+            }
         }
 
     }
-
 }
