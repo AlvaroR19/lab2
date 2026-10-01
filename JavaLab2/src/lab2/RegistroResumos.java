@@ -2,15 +2,17 @@ package lab2;
 
 public class RegistroResumos {
     private String[] tema;
-    private String conteudo;
+    private String[] conteudo;
+    private int index = 0;
 
     public RegistroResumos(int numeroDeResumos){
         this.tema = new String[numeroDeResumos];
+        this.conteudo = new String[numeroDeResumos];
     }
 
-    private boolean verificarTemas(String temaProcurado){
+    public boolean temResumo(String temaProcurado){
         for (int i = 0; i < this.tema.length; i++) {
-            if (this.tema[i].equals(temaProcurado)) {
+            if (this.tema[i] != null && this.tema[i].equals(temaProcurado)) {
                 return true;
             }
         }
@@ -28,15 +30,37 @@ public class RegistroResumos {
     }
 
     public void adiciona(String tema, String conteudo){
-        int index = 0;
-        if (!verificarTemas(tema)) {
+        if (!temResumo(tema)) {
             if (index == this.tema.length) {
                 index = 0;
+            }
+            this.tema[index] = tema;
+            this.conteudo[index] = conteudo;
+            index++;
+        }
+    }
+
+    public String[] pegaResumos(){
+        int total = conta();
+        String[] getResumos = new String[total];
+        for (int i = 0; i < total; i++) {
+            getResumos[i] = this.tema[i]+": "+this.conteudo[i];
+        }
+        return getResumos;
+    }
+
+    public String imprimeResumos() {
+        int totalResumo = conta();
+        String resumosMontados = "- "+totalResumo+" resumo(s) cadastrado(s)\n";
+        for (int i = 0; i < totalResumo; i++) {
+            if (i == 0) {
+                resumosMontados+="- " + this.tema[i] + " | ";
+            } else if (i < totalResumo-1){
+                resumosMontados+=this.tema[i] + " | ";
             } else {
-                this.tema[index] = conteudo;
-                index++;
+                resumosMontados+=this.tema[i];
             }
         }
-
+        return resumosMontados;
     }
 }

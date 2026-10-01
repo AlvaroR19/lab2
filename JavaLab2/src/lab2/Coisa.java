@@ -8,7 +8,7 @@ public class Coisa {
         System.out.println("-----");
         controlarDisciplina();
         System.out.println("-----");
-        //registrarResumos();
+        registrarResumos();
     }
     public static void registrarDescanso() {
         Descanso descanso = new Descanso();
