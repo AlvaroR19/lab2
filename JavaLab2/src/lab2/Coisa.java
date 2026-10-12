@@ -70,6 +70,5 @@ public class Coisa {
         System.out.println(meusResumos.imprimeResumos());
         System.out.println(meusResumos.temResumo("Classes"));
         System.out.println(meusResumos.temResumo("Objetos"));
-        System.out.println(Arrays.toString(meusResumos.busca("um")));
     }
 }

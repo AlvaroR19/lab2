@@ -13,7 +13,7 @@ public class RegistroResumos {
     private int index = 0;
 
     /**
-     *
+     * Construtor para inicializar o array que determinará a capacidade de resumos cadastráveis.
      * @param numeroDeResumos int que determinar a quantidade de resumos cadastráveis.
      */
     public RegistroResumos(int numeroDeResumos) {
@@ -74,7 +74,7 @@ public class RegistroResumos {
         int total = conta();
         String[] getResumos = new String[total];
         for (int i = 0; i < total; i++) {
-            getResumos[i] = this.resumos[i].getTema() + " : " + this.resumos[i].getConteudo();
+            getResumos[i] = this.resumos[i].getTema() + ": " + this.resumos[i].getConteudo();
 
         }
         return getResumos;

@@ -44,7 +44,7 @@ public class Disciplina {
     public Disciplina(String nomeDisciplina, int qNotas, int[] pesosNota) {
         this.nomeDisciplina = nomeDisciplina;
         this.quantNotas = qNotas;
-        this.notas = new double[this.quantNotas]; //Reserva espaços na memória para receber uma quantidade determinada (informada pelo usuário) de notas.
+        this.notas = new double[this.quantNotas];
         this.pesosNotas = pesosNota.clone();
     }
 
@@ -68,8 +68,8 @@ public class Disciplina {
 
     /**
      * Método que calcula a média conforme os parâmetros enviados nos construtores, caso o Array de peso não tenha sido declarado
-     * ou tenha algum peso igual a zero, o programa irá calcular a média aritmética. Caso contrário, a média ponderada.
-     * @return a média calculada baseado nas condições passadas, ou uma média aritmética, ou então uma média ponderada
+     * o programa irá calcular a média aritmética. Caso contrário, a média ponderada.
+     * @return a média calculada baseado nas condições passadas: Média aritmética ou então uma média ponderada
      */
     public double calcularMedia() {
         double somaNotas = 0;
@@ -83,17 +83,15 @@ public class Disciplina {
 
         double numerador = 0;
         double denominador = 0;
-        boolean isZeroOuNegativo = false;
         for (int i = 0; i < this.notas.length; i++) {
             numerador += this.pesosNotas[i] * this.notas[i];
             if (this.pesosNotas[i] > 0) {
                 denominador += this.pesosNotas[i];
             } else {
-                isZeroOuNegativo = true;
             }
         }
 
-        if (denominador<=0 || isZeroOuNegativo) {
+        if (denominador<=0) {
             return somaNotas / this.notas.length;
         } else {
             return numerador/denominador;
